@@ -3,4 +3,4 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  div(id='chart_div')
+  div(id='chart_div', data-request='/posts', data-fields='include_hidden=true')
