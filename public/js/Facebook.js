@@ -164,6 +164,14 @@ const go = () => {
 	chart.draw(data, options);
     });
 
-}
+};
+
+var doc = new jsPDF();
+var elementHandler = {
+    '#ignorePDF': function (element, renderer) {
+	return true;
+    }
+};
+
 
 //export default Facebook;
