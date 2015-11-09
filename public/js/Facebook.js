@@ -44,7 +44,7 @@ class Facebook {
 
     get(id, req, options, cb){
 	FB.api(
-	    [id, req].join(),
+	    [id, req].join('/'),
 	    options.method || 'GET',
 	    _.extend(options, {
 		access_token: this.accessToken
@@ -84,7 +84,7 @@ google.load('visualization', '1.0', {
     'packages': ['corechart']
 });
 
-handler = new Facebook('CAACEdEose0cBABImpJm0vUmfdqMrCfwMtGe5N8iZCwgUaCmWXLSZApjCs2GmwvsZAcYwMEZAsrlf3ziJ5ZAdDhLm9SyiEyK1bjUn3lKHRx9uRViQG59RJzwdh9QsqFwzCVbLXNoWD4YgWgCWl8KCi838ULueLVtsac7OJnvs6a089ea5dGtGQ97oGdtJjveY9wBB02ZAH0igZDZD');
+handler = new Facebook('CAACEdEose0cBAIfMMpwdpFMZB5MzZAlkz9Or1L6fZCgeZCRYtoDnCKrRVPLgO0UoTIglUO228USTCQfC5iJ8FFHXif3aqTzfVJ1ZAPRZCRp9S7vYNP7MukeAxi9ketZBZCig5V4KTcZALZAEFIfqbwln9xX1PlBEfmUalX9JFlB2A8NbNZAiQEtOn2GXkRVhATX08efrGWh44850gZDZD');
 
 
 window.fbAsyncInit = function() {
@@ -93,7 +93,6 @@ window.fbAsyncInit = function() {
 	xfbml: true,
 	version: 'v2.5'
     });
-
     google.setOnLoadCallback(go);
 };
 
@@ -121,7 +120,7 @@ const go = () => {
     // 	handler.get(pageId, '', {}, (response) => {
     // 	});	
     // });
-    handler.get(pageId, '/posts', {
+    handler.get(pageId, 'posts', {
 	since: new Date('2015/01/01').getTime() / 1000,
 	limit: 100
     }, (results) => {
@@ -164,13 +163,6 @@ const go = () => {
 	chart.draw(data, options);
     });
 
-};
-
-var doc = new jsPDF();
-var elementHandler = {
-    '#ignorePDF': function (element, renderer) {
-	return true;
-    }
 };
 
 
